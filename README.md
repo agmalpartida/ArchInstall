@@ -1,6 +1,5 @@
 # Arch Installer Script
 
-<img src="https://imgur.com/a/Adj2lFS" />
 
 ---
 ## Create Arch ISO or Use Image
