@@ -56,7 +56,6 @@ pulseaudio-bluetooth
 python-pip
 qemu
 rsync
-sddm
 sudo
 terminus-font
 traceroute
