@@ -12,6 +12,7 @@ Download ArchISO from <https://archlinux.org/download/> and put on a USB drive w
 From initial Prompt type the following commands:
 
 ```
+loadkeys es
 pacman -Sy git
 git clone https://github.com/agmalpartida/ArchInstall
 cd ArchInstall

@@ -21,6 +21,7 @@ bluez-libs
 bluez-utils
 bridge-utils
 btrfs-progs
+bspwm
 cups
 dialog
 dosfstools
