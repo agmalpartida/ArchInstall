@@ -52,13 +52,12 @@ paru -Syy
 
 sudo systemctl enable sshd
 sudo systemctl start sshd
-ssh alberto@192.168.1.143
+ssh alberto@192.168.1.144
     mkdir -p ~/Git/ansible
-scp -r dotfiles alberto@192.168.1.143:Git
-scp -r ansible/laptop-dev-ansible alberto@192.168.1.143:Git/ansible
-scp -r ansible/ansible-roles alberto@192.168.1.143:Git/ansible
-scp -r secrets-git alberto@192.168.1.143:Git
-ssh -l alberto 192.168.1.211
+scp -r dotfiles alberto@192.168.1.144:Git
+scp -r ansible/laptop-dev-ansible alberto@192.168.1.144:Git/ansible
+scp -r ansible/ansible-roles alberto@192.168.1.144:Git/ansible
+scp -r secrets-git alberto@192.168.1.144:Git
 
 
 
@@ -87,6 +86,10 @@ fc-cache -v
 
 nvim .alacritty.yml
     :PackerInstall
+
+
+ansible-playbook arch.yml --tags "linux,firefox"
+
 
 ## Troubleshooting
 

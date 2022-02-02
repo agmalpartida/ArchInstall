@@ -7,7 +7,6 @@ xorg-xinit
 xterm
 alsa-plugins
 alsa-utils
-ansible
 autoconf
 automake
 base
