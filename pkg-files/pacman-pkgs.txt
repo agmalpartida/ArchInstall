@@ -1,7 +1,6 @@
 mesa
 xorg
 xorg-server
-xorg-apps
 xorg-drivers
 xorg-xkill
 xorg-xinit
@@ -10,18 +9,12 @@ alsa-plugins
 alsa-utils
 autoconf
 automake
-awesome-terminal-fonts
 base
-bash-completion
-bind
-binutils
-bluedevil
 bluez
 bluez-libs
 bluez-utils
 bridge-utils
 btrfs-progs
-bspwm
 cups
 dialog
 dosfstools
@@ -46,10 +39,8 @@ linux-firmware
 linux-headers
 lsof
 make
-neofetch
 networkmanager
 network-manager-applet
-noto-fonts-emoji
 ntfs-3g
 ntp
 openbsd-netcat

@@ -19,6 +19,35 @@ cd ArchInstall
 ./archinstall.sh
 ```
 
+mkdir .mpd .config/pulse
+
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si --noconfirm
+
+paru -Syy
+
+scp -r dotfiles alberto@192.168.1.211:Git/
+scp -r ansible/laptop-dev-ansible alberto@192.168.1.211:Git/ansible/
+scp -r ansible/ansible-roles alberto@192.168.1.211:Git/ansible/
+scp -r secrets-git alberto@192.168.1.211:Git/
+ssh -l alberto 192.168.1.211
+
+
+INSTALL NVM
+curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+nvm install node
+
+sudo pacman -S pyenv
+pyenv install 3.9.2
+pyenv global 3.9.2
+
+ansible-galaxy install -r requirements.yml
+ansible-playbook arch.yml --tags "linux,packages"
+ansible-playbook arch.yml --tags "linux,dotfiles"
+ansible-playbook arch.yml --tags "linux,cron"
+
+
 ## Troubleshooting
 
 __[Arch Linux Installation Guide](https://github.com/rickellis/Arch-Linux-Install-Guide)__
