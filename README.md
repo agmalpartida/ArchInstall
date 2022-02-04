@@ -84,9 +84,22 @@ chsh -s (which zsh)
 
 fc-cache -v
 
-nvim .alacritty.yml
-    :PackerInstall
+nvim +PackerSync
 
+Install LSP
+
+Enter :LSPInstall followed by the name of the server you want to install
+Example: :LSPInstall pyright
+
+Install language parser
+
+Enter :TSInstall followed by the name of the language you want to install
+Example: :TSInstall python
+
+Manage plugins
+
+Run :PackerClean to remove any disabled or unused plugins
+Run :PackerSync to update and clean plugins
 
 ansible-playbook arch.yml --tags "linux,firefox"
 
