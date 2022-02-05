@@ -38,7 +38,7 @@ scp -r ansible/laptop-dev-ansible alberto@192.168.1.144:Git/ansible
 scp -r ansible/ansible-roles alberto@192.168.1.144:Git/ansible
 scp -r secrets-git alberto@192.168.1.144:Git
 
-git clone git@github.com:agmalpartida/idevim.git nvim
+git clone git@github.com:agmalpartida/idevim.git ~/.config/nvim
 ansible-galaxy install -r requirements.yml
 ansible-playbook arch.yml --tags "linux,packages"
 ansible-playbook arch.yml --tags "linux,etc"
