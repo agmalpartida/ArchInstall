@@ -6,6 +6,12 @@
 
 Download ArchISO from <https://archlinux.org/download/> and put on a USB drive with [Etcher](https://www.balena.io/etcher/), [Ventoy](https://www.ventoy.net/en/index.html), or [Rufus](https://rufus.ie/en/)
 
+Or with dd command:
+
+```
+dd bs=4M if=$HOME/Downloads/archlinux-2022.01.01-x86_64.iso of=/dev/sdc conv=fsync oflag=direct status=progress
+```
+
 ## Boot Arch ISO
 
 From initial Prompt type the following commands:
@@ -19,39 +25,12 @@ cd ArchInstall
 ```
 
 
-- How to Ignore Arch Kernel Upgrades
-❯ grep -i Ignore /etc/pacman.conf
-IgnorePkg    = linux-lts linux-lts-headers linux-firmware linux
-
-
-- Optimizing system for faster compilation of the source based packages
-```
-grep “COMPRESSXZ=(xz” /etc/makepkg.conf && \
-grep “#MAKEFLAGS=\”-j” /etc/makepkg.conf && \
-sudo sed -i ‘s/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T 8 -z -)/g’ /etc/makepkg.conf && \
-sudo sed -i ‘s/#MAKEFLAGS=”-j2"/MAKEFLAGS=”-j9"/g’ /etc/makepkg.conf
-grep “COMPRESSXZ=(xz” /etc/makepkg.conf && \
-grep “#MAKEFLAGS=\”-j” /etc/makepkg.conf
-```
-
-- In the “COMPRESSXZ=(xz -c -T 8 -z -)” -T 8 represent the number of CPU cores and you can find the correct number by running “lscpu | grep “CPU(s):” | grep -v NUMA”
-
-- Optional add nice color to pacman output
-```
-grep “Color” /etc/pacman.conf && \
-sudo sed -i -e ‘s/#Color/Color/g’ /etc/pacman.conf && \
-grep “Color” /etc/pacman.conf
-```
-
-
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si --noconfirm
 
 paru -Syy
 
-sudo systemctl enable sshd
-sudo systemctl start sshd
 ssh alberto@192.168.1.144
     mkdir -p ~/Git/ansible
 scp -r dotfiles alberto@192.168.1.144:Git
@@ -59,47 +38,20 @@ scp -r ansible/laptop-dev-ansible alberto@192.168.1.144:Git/ansible
 scp -r ansible/ansible-roles alberto@192.168.1.144:Git/ansible
 scp -r secrets-git alberto@192.168.1.144:Git
 
-
-
-sudo pacman -S pyenv
-pyenv install 3.9.2
-pyenv global 3.9.2
-
 ansible-galaxy install -r requirements.yml
 ansible-playbook arch.yml --tags "linux,packages"
-mkdir ~/.mpd ~/.config/pulse
+ansible-playbook arch.yml --tags "linux,etc"
+ansible-playbook arch.yml --tags "linux,users"
 ansible-playbook arch.yml --tags "linux,dotfiles"
 ansible-playbook arch.yml --tags "linux,cron"
 
-INSTALL NVM
-curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-nvm install node
-
+ansible-playbook arch.yml --tags "linux,nvm"
+ansible-playbook arch.yml --tags "linux,pyenv"
 ansible-playbook arch.yml --tags "linux,extra"
-
-
-git clone https://github.com/fsquillace/kyrat ~/.local/share/kyrat
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-chsh -s (which zsh)
 
 fc-cache -v
 
 nvim +PackerSync
-
-Install LSP
-
-Enter :LSPInstall followed by the name of the server you want to install
-Example: :LSPInstall pyright
-
-Install language parser
-
-Enter :TSInstall followed by the name of the language you want to install
-Example: :TSInstall python
-
-Manage plugins
-
-Run :PackerClean to remove any disabled or unused plugins
-Run :PackerSync to update and clean plugins
 
 ansible-playbook arch.yml --tags "linux,firefox"
 
