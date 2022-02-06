@@ -29,6 +29,14 @@ git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si --noconfirm
 
+paru --skipreview -S <paquete>
+
+# --- Cleanup ---
+
+cd $ABS_PATH
+rm -rf build
+sudo pacman --noconfirm -Rns $(pacman -Qdtq)
+
 paru -Syy
 
 ssh alberto@192.168.1.144
