@@ -23,7 +23,7 @@ git clone https://github.com/agmalpartida/ArchInstall
 cd ArchInstall
 ./archinstall.sh
 ```
-
+sudo systemctl start sshd
 
 git clone https://aur.archlinux.org/paru.git
 cd paru
@@ -41,6 +41,7 @@ paru -Syy
 
 ssh alberto@192.168.1.144
     mkdir -p ~/Git/ansible
+sudo pacman -S ansible
 scp -r dotfiles alberto@192.168.1.144:Git
 scp -r ansible/laptop-dev-ansible alberto@192.168.1.144:Git/ansible
 scp -r ansible/ansible-roles alberto@192.168.1.144:Git/ansible
