@@ -55,6 +55,7 @@ ansible-playbook arch.yml --tags "linux,dotfiles"
 ansible-playbook arch.yml --tags "linux,cron"
 
 git clone git@github.com:agmalpartida/idevim.git ~/.config/nvim
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerline
 
 ansible-playbook arch.yml --tags "linux,nvm"
 ansible-playbook arch.yml --tags "linux,pyenv"
