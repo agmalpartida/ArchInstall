@@ -56,16 +56,19 @@ ansible-playbook arch.yml --tags "linux,docker"
 ansible-playbook arch.yml --tags "linux,kyrat"
 ansible-playbook arch.yml --tags "linux,cron"
 
-git clone git@github.com:agmalpartida/idevim.git ~/.config/nvim
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerline
 
 ansible-playbook arch.yml --tags "linux,nvm"
+nvm install node
 ansible-playbook arch.yml --tags "linux,pyenv"
 ansible-playbook arch.yml --tags "linux,fonts"
 ansible-playbook arch.yml --tags "linux,virt"
 ansible-playbook arch.yml --tags "linux,locales"
-ansible-playbook arch.yml --tags "linux,grub"
-ansible-playbook arch.yml --tags "linux,sddm"
+ansible-playbook arch.yml --tags "linux,grub" -
+ansible-playbook arch.yml --tags "linux,sddm" -
+
+
+git clone git@github.com:agmalpartida/idevim.git ~/.config/nvim
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerline
 
 ansible-playbook arch.yml --tags "linux,extra"
 
